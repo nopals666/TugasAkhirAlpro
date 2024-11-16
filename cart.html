@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Keranjang Belanja Toko Online Kami">
+    <title>Keranjang Belanja</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        // Fungsi untuk menampilkan produk di keranjang
+        function displayCart() {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let cartTable = document.querySelector('.cart-items tbody');
+            cartTable.innerHTML = ''; // Kosongkan tabel sebelum diisi ulang
+
+            let total = 0;
+
+            cart.forEach(item => {
+                let row = document.createElement('tr');
+
+                let totalItem = item.price * item.quantity;
+                total += totalItem;
+
+                row.innerHTML = `
+                    <td><img src="${item.image}" alt="${item.name}" class="product-image"></td>
+                    <td>${item.name}</td>
+                    <td>Rp. ${item.price.toLocaleString()}</td>
+                    <td>${item.quantity}</td>
+                    <td>Rp. ${totalItem.toLocaleString()}</td>
+                    <td><button class="remove-btn" onclick="removeItem('${item.name}')">Hapus</button></td>
+                `;
+                cartTable.appendChild(row);
+            });
+
+            // Update total
+            document.querySelector('.cart-summary-total').textContent = `Rp. ${total.toLocaleString()}`;
+        }
+
+        // Fungsi untuk menghapus produk dari keranjang
+        function removeItem(productName) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart = cart.filter(item => item.name !== productName);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            displayCart();
+        }
+
+        // Memuat keranjang saat halaman dimuat
+        window.addEventListener('DOMContentLoaded', displayCart);
+    </script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>KostShop</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Beranda</a></li>
+                <li><a href="products.html">Produk</a></li>
+                <li><a href="about.html">Tentang Kami</a></li>
+                <li><a href="contact.html">Kontak</a></li>
+                <li><a href="cart.html">Keranjang</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="cart">
+        <h2>Keranjang Belanja</h2>
+        <div class="cart-items">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Gambar</th>
+                        <th>Produk</th>
+                        <th>Harga</th>
+                        <th>Jumlah</th>
+                        <th>Total</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Item keranjang akan dimuat di sini -->
+                </tbody>
+            </table>
+
+            <div class="cart-summary">
+                <h3>Total Belanja: <span class="cart-summary-total">Rp. 0</span></h3>
+                <button class="btn checkout-btn" onclick="window.location.href='payment.html'">Lanjutkan ke Pembayaran</button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 Toko Online Saya. Semua hak dilindungi.</p>
+            <div class="social-media">
+                <a href="https://www.facebook.com/YourPage" target="_blank">Facebook</a> | 
+                <a href="https://www.instagram.com/YourUsername" target="_blank">Instagram</a> | 
+                <a href="https://www.twitter.com/YourUsername" target="_blank">Twitter</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
