@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Toko Online - Produk Berkualitas">
+    <title>Produk Toko Kami</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        // Fungsi untuk menambahkan produk ke keranjang
+        function addToCart(productName, productPrice) {
+            // Ambil keranjang yang ada di localStorage atau buat array baru jika belum ada
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+            // Cek apakah produk sudah ada dalam keranjang
+            let productIndex = cart.findIndex(item => item.name === productName);
+
+            if (productIndex !== -1) {
+                // Jika produk sudah ada, tambah jumlahnya
+                cart[productIndex].quantity += 1;
+            } else {
+                // Jika produk belum ada, tambahkan produk baru
+                cart.push({
+                    name: productName,
+                    price: productPrice,
+                    quantity: 1
+                });
+            }
+
+            // Simpan kembali keranjang ke localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            // Tampilkan pesan atau lakukan tindakan lain
+            alert(`${productName} telah ditambahkan ke keranjang!`);
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>KostShop</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Beranda</a></li>
+                <li><a href="products.html">Produk</a></li>
+                <li><a href="about.html">Tentang Kami</a></li>
+                <li><a href="contact.html">Kontak</a></li>
+                <li><a href="cart.html">Keranjang</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="products">
+        <h2>Produk Unggulan</h2>
+        <div class="product-grid">
+            <!-- Produk 1 -->
+            <div class="product-card">
+                <img src="magicom.jpg" alt="Produk 1">
+                <h3>Magic Com</h3>
+                <p>Magic com adalah alat elektronik dapur yang berfungsi untuk menanak nasi, menghangatkan nasi, dan memasak makanan lainnya.</p>
+                <p class="price">Rp. 120.000</p>
+                <button class="btn" onclick="addToCart('Magic Com', 120000)">Tambah ke Keranjang</button>
+            </div>
+
+            <!-- Produk 2 -->
+            <div class="product-card">
+                <img src="indomie.jpg" alt="Produk 2">
+                <h3>Mie Instan 10 pcs</h3>
+                <p>Mie instan adalah makanan cepat saji yang berupa mi yang sudah dimasak dan dijual dalam kemasan, cangkir, atau mangkuk.</p>
+                <p class="price">Rp. 30.000</p>
+                <button class="btn" onclick="addToCart('Mie Instan 10 pcs', 30000)">Tambah ke Keranjang</button>
+            </div>
+
+            <!-- Produk 3 -->
+            <div class="product-card">
+                <img src="rak sepatu.jpg" alt="Produk 3">
+                <h3>Rak Sepatu</h3>
+                <p>Rak sepatu minimalis yang membantu Anda menyimpan sepatu dengan rapi dan mudah diakses.</p>
+                <p class="price">Rp. 150.000</p>
+                <button class="btn" onclick="addToCart('Rak Sepatu', 150000)">Tambah ke Keranjang</button>
+            </div>
+
+            <!-- Produk 4 -->
+            <div class="product-card">
+                <img src="sprei.jpg" alt="Produk 4">
+                <h3>Sprei 1 Set</h3>
+                <p>Sprei berkualitas tinggi dengan desain elegan, cocok untuk mempercantik tempat tidur Anda.</p>
+                <p class="price">Rp. 250.000</p>
+                <button class="btn" onclick="addToCart('Sprei 1 Set', 250000)">Tambah ke Keranjang</button>
+            </div>
+
+            <!-- Produk 5 -->
+            <div class="product-card">
+                <img src="binder.jpg" alt="Produk 5">
+                <h3>Binder</h3>
+                <p>Binder dengan desain praktis, cocok untuk menyimpan dokumen, catatan, atau file penting Anda.</p>
+                <p class="price">Rp. 40.000</p>
+                <button class="btn" onclick="addToCart('Binder', 40000)">Tambah ke Keranjang</button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 Toko Online Saya. Semua hak dilindungi.</p>
+            <div class="social-media">
+                <a href="https://www.facebook.com/YourPage" target="_blank">Facebook</a> | 
+                <a href="https://www.instagram.com/YourUsername" target="_blank">Instagram</a> | 
+                <a href="https://www.twitter.com/YourUsername" target="_blank">Twitter</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
