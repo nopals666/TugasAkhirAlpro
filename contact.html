@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Kontak Toko Online Kami">
+    <title>Kontak Kami</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Include FontAwesome for icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>KostShop</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Beranda</a></li>
+                <li><a href="products.html">Produk</a></li>
+                <li><a href="about.html">Tentang Kami</a></li>
+                <li><a href="contact.html">Kontak</a></li>
+                <li><a href="cart.html">Keranjang</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="contact">
+        <h2>Kontak Kami</h2>
+        <p>Untuk pertanyaan atau informasi lebih lanjut, jangan ragu untuk menghubungi kami melalui form di bawah ini.</p>
+
+        <!-- Icons for Contact Information -->
+        <div class="contact-icons">
+            <div>
+                <i class="fas fa-envelope"></i>
+                <p>Email: infokostshop@gmail.com</p>
+            </div>
+            <div>
+                <i class="fas fa-phone-alt"></i>
+                <p>Telepon: +62 821-4532-7846</p>
+            </div>
+            <div>
+                <i class="fas fa-map-marker-alt"></i>
+                <p>Alamat: Jl. Contoh No. 123, Jakarta</p>
+            </div>
+        </div>
+
+        <!-- Contact Form -->
+        <form action="submit_contact.php" method="POST" class="contact-form">
+            <input type="text" name="name" placeholder="Nama Anda" required>
+            <input type="email" name="email" placeholder="Email Anda" required>
+            <textarea name="message" placeholder="Pesan Anda" rows="5" required></textarea>
+            <button type="submit">Kirim Pesan</button>
+        </form>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 Toko Online Kami. Semua hak dilindungi.</p>
+            <div class="social-media">
+                <a href="https://www.facebook.com/YourPage" target="_blank">Facebook</a> | 
+                <a href="https://www.instagram.com/YourUsername" target="_blank">Instagram</a> | 
+                <a href="https://www.twitter.com/YourUsername" target="_blank">Twitter</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
